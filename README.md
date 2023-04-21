@@ -1,7 +1,36 @@
 # CNN - Densenet201 - Tranfer Learning
 
+Execute this command to create a compatible environment.
+
+```
+conda env create -f environment.yml
+```
+
 In this repo, we will train a model to detect the following dataset.
 The dataset can be downloaded [here.](https://drive.google.com/file/d/1JqXu1tSejWrwESAU_V5pYBw3PMdK2-yA/view?usp=sharing "Click here")
+
+## Preliminary Analysis
+
+The dataset contains images of different classes such as bedroom, kitchen, inside city. The aim is to train a model to identify the different features and analyze the mistakes that the model does.
+
+The different classes are:
+
+* Bedroom. 116 images.    
+* Coast. 260 images.      
+* Forest. 228 images.
+* Highway. 160 images.
+* Industrial. 211 images.
+* Inside city. 208 images.
+* Kitchen. 110 images.
+* Living Room. 189 images.
+* Mountain. 274 images.
+* Office. 115 images.
+* Open Country. 310 images.
+* Store. 215 images. 
+* Street. 192 images.
+* Suburb. 141 images.
+* Tall Building. 256 images.
+
 
 ## Densenet201 final trained model (A Single Click Solution)
 
