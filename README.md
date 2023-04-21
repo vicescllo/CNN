@@ -64,11 +64,11 @@ This team has trained a model which we have used to do this analysis. This train
 
 Our team has trained a model with 100 epochs and 2 layers has been unfreezed and this is the results. We added a early-stopping criteria to avoid overfitting and this model only was trained 29 epochs.
 
-![alt text](Image/output.png "Results")
+![alt text](Image/output1.png "Results")
 
 Also de matrix confusion has been represented.
 
-![alt text](Image/cm.png "Results")
+![alt text](Image/cm1.png "Results")
 
 It can be observed that the obtained validation set accuracy is 0.9266
 
