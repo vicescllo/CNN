@@ -31,8 +31,50 @@ The different classes are:
 * Suburb. 141 images.
 * Tall Building. 256 images.
 
+Therefore, it will be necessary to balance the classes. To achive that, class weights have been created using sklearn.
 
-## Densenet201 final trained model (A Single Click Solution)
+```
+from sklearn.utils.class_weight import compute_class_weight as ccw
+
+training_labels = np.array(training_generator.classes)
+
+class_weights = ccw(class_weight='balanced', classes=np.unique(training_labels), y=training_labels)
+
+class_weights_dict = dict(enumerate(class_weights))
+
+```
+And then, this class is introduced in tensorflow
+
+```
+history = self._model.fit(
+                training_generator,
+                epochs=epochs,
+                steps_per_epoch=len(training_generator),
+                validation_data=validation_generator,
+                validation_steps=len(validation_generator),
+                callbacks=callbacks,
+                class_weight=class_weights_dict
+            )
+
+```
+
+## Densenet201 final trained model balancing classes (A single Click Solution)
+
+This team has trained a model which we have used to do this analysis. This trained model can be downloaded [here. ](https://drive.google.com/drive/folders/1l2wQRxbgRWG4KLZTtrDErUU6QIUrvj6x?usp=sharing "Click here")
+
+Our team has trained a model with 100 epochs and 2 layers has been unfreezed and this is the results. We added a early-stopping criteria to avoid overfitting and this model only was trained 29 epochs.
+
+![alt text](Image/output.png "Results")
+
+Also de matrix confusion has been represented.
+
+![alt text](Image/cm.png "Results")
+
+It can be observed that the obtained validation set accuracy is 0.9266
+
+
+
+## Densenet201 final trained model withoug balancing classes (A Single Click Solution)
 
 This team has trained a model which we have used to do this analysis. This trained model can be downloaded [here. ](https://drive.google.com/drive/folders/1Km1B9xPj4ra8YBGugduULftw7rYzmVIZ?usp=sharing "Click here")
 
