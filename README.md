@@ -62,7 +62,7 @@ history = self._model.fit(
 
 This team has trained a model which we have used to do this analysis. This trained model can be downloaded [here. ](https://drive.google.com/drive/folders/1l2wQRxbgRWG4KLZTtrDErUU6QIUrvj6x?usp=sharing "Click here")
 
-Our team has trained a model with 100 epochs and 2 layers has been unfreezed and this is the results. We added a early-stopping criteria to avoid overfitting and this model only was trained 29 epochs.
+Our team has trained a model with 100 epochs and 2 layers has been unfreezed and this is the results. We added a early-stopping criteria to avoid overfitting and this model only was trained 36 epochs.
 
 ![alt text](Image/output1.png "Results")
 
