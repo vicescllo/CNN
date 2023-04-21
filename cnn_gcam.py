@@ -94,8 +94,16 @@ class CNN:
             class_mode='categorical',
             shuffle=False
         )
+        ## Deal with imbalanced dataset
+        from sklearn.utils.class_weight import compute_class_weight as ccw
 
-        
+        training_labels = np.array(training_generator.classes)
+
+        class_weights = ccw(class_weight='balanced', classes=np.unique(training_labels), y=training_labels)
+
+        class_weights_dict = dict(enumerate(class_weights))
+       
+
         # Add a new softmax output layer to learn the training dataset classes
         #self._add_output_layers(training_generator.num_classes)
 
@@ -110,14 +118,13 @@ class CNN:
         )
 
         # Display a summary of the model
-        print('\n\nModel summary')
         self._model.summary()
 
         # Callbacks. Check https://www.tensorflow.org/api_docs/python/tf/keras/callbacks for more alternatives.
         # EarlyStopping and ModelCheckpoint are probably the most relevant.
         #create early stopping accuracy 
         early_stopping = tf.keras.callbacks.EarlyStopping(
-            monitor='val_accuracy', patience=3, verbose=1, mode='max',
+            monitor='val_accuracy', patience=5, verbose=1, mode='max',
             baseline=None, restore_best_weights=True
         )
 
@@ -146,7 +153,8 @@ class CNN:
                 steps_per_epoch=len(training_generator),
                 validation_data=validation_generator,
                 validation_steps=len(validation_generator),
-                callbacks=callbacks
+                callbacks=callbacks,
+                class_weight=class_weights_dict
             )
 
             # Plot model training history
